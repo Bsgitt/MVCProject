@@ -1,0 +1,60 @@
+@model IEnumerable<MVCpresent.Models.ProductModel>
+@{
+    ViewData["Title"] = "Movie index";
+}
+<h1>@ViewData["Title"]</h1>
+@Html.ActionLink("+ เพิ่ม", "Create", "Product", null, new { @class = "btn btn-primary", @style = "margin-bottom: 20px;" })
+<br>
+<table class="table">
+    <tr>
+        <th>ProductID</th>
+        <th>ProductName</th>
+        <th>productDetail</th>
+        <th>Image</th>
+        <th>price</th>
+        <th>stock</th>
+        <th>catagory</th>
+        <th>แก้ไข</th>
+        <th>ลบ</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="item-id">@item.id</td>
+            <td>@item.productID</td>
+            <td>@item.productName</td>
+            <td>@item.productDetail</td>
+            
+            <td>
+                <img src="@item.coverImg" height="80px" />
+            </td>
+            <td>@item.price</td>
+            <td>@item.stock</td>
+            <td>@item.catagory</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { id = item.id, @class = "btn btn-primary", @style = "margin-bottom: 20px;" })
+            </td>
+            <td>
+                <input type="button" value="Delete" class="btn btn-danger" />
+            </td>
+        </tr>
+    }
+</table>
+@using (Html.BeginForm("delete", "Product", FormMethod.Post, new { name = "frmProduct", id = "frmProduct" }))
+{
+    <input type="hidden" name="id" />
+}
+
+@section Scripts
+{
+    <script>
+        $(".btn-danger").click(function () {
+            if(!confirm('Do you really want to delete this Product?')) {
+                return false;
+            }
+            var id = $(this).closest("tr").find(".item-id").text();
+            document.frmProduct.id.value = id;
+            document.getElementById("frmProduct").submit();
+        });
+    </script>
+}

@@ -1,0 +1,64 @@
+@model IEnumerable<MVCpresent.Models.EmployeeData>
+@{
+    ViewData["Title"] = "Employee Data";
+}
+<h1>@ViewData["Title"]</h1>
+@Html.ActionLink("+ เพิ่ม", "Create", "Employee", null, new { @class = "btn btn-primary", @style = "margin-bottom: 20px;" })
+<br>
+<table class="table">
+    <tr>
+        <th>id Employee</th>
+        <th>Firstname</th>
+        <th>lastname</th>
+        <th>Profile</th>
+        <th>birthday</th>
+        <th>Position</th>
+        <th>address</th>
+        <th>salary</th>
+        <th>age</th>
+        <th>แก้ไข</th>
+        <th>ลบ</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="item-id">@item.id</td>
+            <td>@item.firstname</td>
+            <td>@item.lastname</td>
+            <td>
+                <img src="@item.coverImg" height="80px" />
+            </td>
+            <td>@item.releaseDate.Value.ToString("dd MMM yyyy")</td>
+            <td>@item.position</td>
+            <td>@item.address</td>
+            <td>@item.salary</td>
+            <td>@item.age</td>
+            
+        
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { id = item.id, @class = "btn btn-primary", @style = "margin-bottom: 20px;" })
+            </td>
+            <td>
+                <input type="button" value="Delete" class="btn btn-danger" />
+            </td>
+        </tr>
+    }
+</table>
+@using (Html.BeginForm("delete", "Employee", FormMethod.Post, new { name = "frmEmployee", id = "frmEmployee" }))
+{
+    <input type="hidden" name="id" />
+}
+
+@section Scripts
+{
+    <script>
+        $(".btn-danger").click(function () {
+            if(!confirm('Do you really want to delete this Employee?')) {
+                return false;
+            }
+            var id = $(this).closest("tr").find(".item-id").text();
+            document.frmEmployee.id.value = id;
+            document.getElementById("frmEmployee").submit();
+        });
+    </script>
+}
