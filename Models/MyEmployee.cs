@@ -1,7 +1,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 
-namespace MVCpresent.Models
+namespace BollMVC.Models
 {
     public class MyEmployee : DbContext
     {

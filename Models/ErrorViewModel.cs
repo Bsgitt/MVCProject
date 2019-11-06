@@ -1,6 +1,6 @@
 using System;
 
-namespace MVCpresent.Models
+namespace BollMVC.Models
 {
     public class ErrorViewModel
     {

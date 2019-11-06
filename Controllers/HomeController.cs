@@ -4,18 +4,17 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MVCpresent.Models;
+using BollMVC.Models;
 using Microsoft.AspNetCore.Mvc.Razor;
 
 
-namespace MVCpresent.Controllers
+namespace BollMVC.Controllers
 {
     public class HomeController : Controller
     {
         public IActionResult Index()
         {
-            var fullName = ("bas","Nantaphong");
-            ViewData["myname"] = fullName.Item1+ " "+fullName.Item2;
+           
             return View();
         }
 

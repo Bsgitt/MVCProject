@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace MVCpresent.Models
+namespace BollMVC.Models
 {
    public class MovieModel
     {

@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using MVCpresent.Models;
+using BollMVC.Models;
 using Microsoft.AspNetCore.Mvc.Razor;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace MVCpresent.Controllers
+namespace BollMVC.Controllers
 {
     public class ProductController : Controller
     {
